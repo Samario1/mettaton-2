@@ -1615,7 +1615,7 @@ async def _registerChar(ctx, user):
                         currentlyRegistering.remove(user.id)
 
                         if response.lower() == getLang("Register", "REGISTER_COMPLETE"):
-                            await user.send(getLang("Register", "REGISTER_SUCCESS_ID").format(int(charID)))
+                            await user.send(getLang("Register", "REGISTER_SUCCESS_ID").format(cfields[getLang("Fields", "name")], str(charID), str(charID)))
                             await alertGMs(ctx, charID)
                         else:
                             await user.send(getLang("Register", "REGISTER_SUCCESS_STORE").format(int(charID)))
@@ -1722,7 +1722,7 @@ async def _registerChar(ctx, user):
 
                         charID = await charadd(owner=ctx.author.id, name=name, prefilled=prefilled)
 
-                        await user.send(getLang("Register", "REGISTER_PREFILLED_SUCCESS_ID").format(str(charID)))
+                        await user.send(getLang("Register", "REGISTER_PREFILLED_SUCCESS_ID").format(cfields[getLang("Fields", "name")], str(charID), str(charID)))
                         currentlyRegistering.remove(user.id)
                         await alertGMs(ctx, charID)
                         charcomplete = True
